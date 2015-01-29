@@ -13,10 +13,12 @@ import (
 	"runtime"
 	"syscall"
 	"time"
+	"github.com/michaelklishin/rabbit-hole"
 )
 
 var (
 	addr = flag.String("addr", ":7000", "Server port")
+	rmqc, _ = NewClient("http://127.0.0.1:15672", "guest", "guest") // use default config [test only]
 )
 
 func ChannelsKeeper(clients chan chan string) {
